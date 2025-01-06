@@ -1,3 +1,15 @@
+### 로그인
+POST http://133.186.241.167:8200/login
+
+{
+  "username": "nhnacademy",
+  "password": "nhnacademy12345*"
+}
+
+### index (인증 테스트)
+GET localhost:8080/
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMCwiaXNzIjoibmhuLWFjYWRlbXktbWFyY28iLCJpYXQiOjE3MzYxMzQ4MzUsImV4cCI6MTczNjIyMTIzNX0.8O5xE1pY0ka9aX-TA4rnqA3tHBwAR4_E8-P9WhtBkMg
+
 ### 객실조회
 GET http://localhost:8080/v1/hotel-api/hotels/100/rooms
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMCwiaXNzIjoibmhuLWFjYWRlbXktbWFyY28iLCJpYXQiOjE3MTA1MTIyMDgsImV4cCI6MTc5NjkxMjIwOH0.-sx5W47k7xEI24iTPSSFUzxOH8LNLzboDjmJlqykPkE
@@ -17,14 +29,15 @@ Content-Type: application/json
   "viewType": "oceanView"
 }
 
-### 로그인
-POST http://133.186.241.167:8200/login
+###
+POST localhost:8080/v1/hotel-api/hotels/100/rooms
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMCwiaXNzIjoibmhuLWFjYWRlbXktbWFyY28iLCJpYXQiOjE3MTA1MTIyMDgsImV4cCI6MTc5NjkxMjIwOH0.-sx5W47k7xEI24iTPSSFUzxOH8LNLzboDjmJlqykPkE
+Content-Type: application/json
 
 {
-  "username": "nhnacademy",
-  "password": "nhnacademy12345*"
+    "name" : "unique",
+    "capacity" : 200000000000,
+    "floor" : 3,
+    "hasBathtub" : true,
+    "viewType" : "cityView"
 }
-
-### index
-GET localhost:8080/
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMCwiaXNzIjoibmhuLWFjYWRlbXktbWFyY28iLCJpYXQiOjE3MzYxMzQ4MzUsImV4cCI6MTczNjIyMTIzNX0.8O5xE1pY0ka9aX-TA4rnqA3tHBwAR4_E8-P9WhtBkMg

@@ -21,22 +21,23 @@ public class Room {
 
     @NotNull
     @ManyToOne
+    @JoinColumn(name = "hotel_id")
     private Hotel hotel;
 
     @NotNull
     private String name;
 
     @NotNull
-    private int capacity;
+    private Byte capacity;
 
     @NotNull
-    private int floor;
+    private Byte floor;
 
     @NotNull
     private boolean bathtubFlag = true;
 
     @NotNull
-    private int viewType;
+    private Byte viewType;
 
     @NotNull
     private LocalDateTime createdAt;

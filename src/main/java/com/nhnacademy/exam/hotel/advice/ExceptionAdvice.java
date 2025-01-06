@@ -3,6 +3,7 @@ package com.nhnacademy.exam.hotel.advice;
 import com.nhnacademy.exam.hotel.dto.ErrorDto;
 import com.nhnacademy.exam.hotel.exception.DataAlreadyExistsException;
 import com.nhnacademy.exam.hotel.exception.DataNotFoundException;
+import com.nhnacademy.exam.hotel.exception.InvalidAccessException;
 import com.nhnacademy.exam.hotel.exception.WrongDataException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +37,14 @@ public class ExceptionAdvice {
     public ResponseEntity<?> handleBadRequestException(Exception e) {
         String errorMessage = e.getMessage() != null ? e.getMessage() : "An error occurred";
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorDto(errorMessage));
+    }
+
+    @ExceptionHandler({
+            InvalidAccessException.class
+    })
+    public ResponseEntity<?> handleFrobiddenException(Exception e) {
+        String errorMessage = e.getMessage() != null ? e.getMessage() : "An error occurred";
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new ErrorDto(errorMessage));
     }
 
     @ExceptionHandler({

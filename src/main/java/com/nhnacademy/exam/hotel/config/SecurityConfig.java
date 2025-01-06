@@ -32,6 +32,17 @@ public class SecurityConfig {
         http.addFilterBefore(new JwtAuthenticationFilter(jwtUtils),
                         UsernamePasswordAuthenticationFilter.class);
 
+
+
+        // 세션 로그인 해보는 중엔 위에꺼 전부 비 활성화하기
+
+        // 로그인은 내꺼 쓰고 로그아웃 설정
+        http.logout(logout ->
+                logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login")
+        );
+
         return http.build();
     }
 

@@ -17,12 +17,6 @@ public class RoomController {
 
     private final RoomService roomService;
 
-    // 인증 테스트
-    @GetMapping("/")
-    public ResponseEntity<?> index() {
-        return ResponseEntity.ok().build();
-    }
-
     // 객실 조회
     @GetMapping("/v1/hotel-api/hotels/{hotel-id}/rooms")
     public List<RoomResponse> getAllRooms(

@@ -26,13 +26,13 @@ public class JwtUtils {
     }
 
     // 토큰에서 id 추출
-    public String getUserIdFromToken(String token) {
+    public Integer getUserIdFromToken(String token) {
         return Jwts.parser()
                 .setSigningKey(secret)
                 .build()
                 .parseClaimsJws(token)
                 .getBody()
-                .get("userId", String.class);
+                .get("userId", Integer.class);
     }
 
     // 토큰에서 이름 추출

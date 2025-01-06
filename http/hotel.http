@@ -1,11 +1,11 @@
 ### 객실조회
-GET http://localhost:8080//v1/hotel-api/hotels/100/rooms
+GET http://localhost:8080/v1/hotel-api/hotels/100/rooms
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMCwiaXNzIjoibmhuLWFjYWRlbXktbWFyY28iLCJpYXQiOjE3MTA1MTIyMDgsImV4cCI6MTc5NjkxMjIwOH0.-sx5W47k7xEI24iTPSSFUzxOH8LNLzboDjmJlqykPkE
 Content-Type: application/json
 
 
 ### 객실생성
-POST http://localhost:8080//v1/hotel-api/hotels/100/rooms
+POST http://localhost:8080/v1/hotel-api/hotels/100/rooms
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMCwiaXNzIjoibmhuLWFjYWRlbXktbWFyY28iLCJpYXQiOjE3MTA1MTIyMDgsImV4cCI6MTc5NjkxMjIwOH0.-sx5W47k7xEI24iTPSSFUzxOH8LNLzboDjmJlqykPkE
 Content-Type: application/json
 

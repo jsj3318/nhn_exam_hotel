@@ -1,5 +1,6 @@
 package com.nhnacademy.exam.hotel.domain;
 
+import com.nhnacademy.exam.hotel.converter.ViewTypeConverter;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -37,7 +38,8 @@ public class Room {
     private boolean bathtubFlag = true;
 
     @NotNull
-    private Byte viewType;
+    @Convert(converter = ViewTypeConverter.class)
+    private ViewType viewType;
 
     @NotNull
     private LocalDateTime createdAt;

@@ -7,7 +7,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @AllArgsConstructor
@@ -23,10 +25,10 @@ public class Reservation {
     private Long userId;
 
     @NotNull
-    private LocalDateTime checkIn;
+    private LocalDate checkIn;
 
     @NotNull
-    private LocalDateTime checkOut;
+    private LocalDate checkOut;
 
     @NotNull
     private int peopleCount;

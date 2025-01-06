@@ -1,0 +1,83 @@
+### 객실 예약
+POST localhost:8080/v1/hotel-api/hotels/100/reservation
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMCwiaXNzIjoibmhuLWFjYWRlbXktbWFyY28iLCJpYXQiOjE3MTA1MTIyMDgsImV4cCI6MTc5NjkxMjIwOH0.-sx5W47k7xEI24iTPSSFUzxOH8LNLzboDjmJlqykPkE
+Content-Type: application/json
+
+{
+  "checkIn" : "2025-01-08",
+  "checkOut" : "2025-01-09",
+  "peopleCount" : 4,
+  "roomName" : "WestWing 1102"
+}
+
+### 객실 예약2
+POST localhost:8080/v1/hotel-api/hotels/100/reservation
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMCwiaXNzIjoibmhuLWFjYWRlbXktbWFyY28iLCJpYXQiOjE3MTA1MTIyMDgsImV4cCI6MTc5NjkxMjIwOH0.-sx5W47k7xEI24iTPSSFUzxOH8LNLzboDjmJlqykPkE
+Content-Type: application/json
+
+{
+  "checkIn" : "2025-01-08",
+  "checkOut" : "2025-01-09",
+  "peopleCount" : 4,
+  "roomName" : "WestWing 1103"
+}
+
+### 객실 예약3
+POST localhost:8080/v1/hotel-api/hotels/100/reservation
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMCwiaXNzIjoibmhuLWFjYWRlbXktbWFyY28iLCJpYXQiOjE3MTA1MTIyMDgsImV4cCI6MTc5NjkxMjIwOH0.-sx5W47k7xEI24iTPSSFUzxOH8LNLzboDjmJlqykPkE
+Content-Type: application/json
+
+{
+  "checkIn" : "2025-01-08",
+  "checkOut" : "2025-01-09",
+  "peopleCount" : 4,
+  "roomName" : "WestWing 1104"
+}
+
+### 객실 예약4 - 100번 사용자가 하루 3개 이상 예약으로 실패
+### 예상 응답
+#{
+#  "errorMessage": "2025-01-08 해당 날짜에 더 이상 예약 할 수 없습니다."
+#}
+POST localhost:8080/v1/hotel-api/hotels/100/reservation
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMCwiaXNzIjoibmhuLWFjYWRlbXktbWFyY28iLCJpYXQiOjE3MTA1MTIyMDgsImV4cCI6MTc5NjkxMjIwOH0.-sx5W47k7xEI24iTPSSFUzxOH8LNLzboDjmJlqykPkE
+Content-Type: application/json
+
+{
+  "checkIn" : "2025-01-08",
+  "checkOut" : "2025-01-09",
+  "peopleCount" : 4,
+  "roomName" : "..."
+}
+
+### 객실 예약5 - 이미 다른 사용자가 예약한 방 예약
+### 예상 응답
+#{
+#  "errorMessage": "reservation already exists in 2025-01-08"
+#}
+POST localhost:8080/v1/hotel-api/hotels/100/reservation
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMCwiaXNzIjoibmhuLWFjYWRlbXktbWFyY28iLCJpYXQiOjE3MTA1MTIyMDgsImV4cCI6MTc5NjkxMjIwOH0.-sx5W47k7xEI24iTPSSFUzxOH8LNLzboDjmJlqykPkE
+Content-Type: application/json
+
+{
+  "checkIn" : "2025-01-08",
+  "checkOut" : "2025-01-09",
+  "peopleCount" : 4,
+  "roomName" : "temp"
+}
+
+### 객실 예약6 - 예약 할 수 없는 사람이 예약 시도 (100번이 아닌)
+### 예상 응답
+#{
+#  "errorMessage": "예약할 수 없는 사용자 입니다. : 9999"
+#}
+POST localhost:8080/v1/hotel-api/hotels/100/reservation
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjk5OTksImlzcyI6Im5obi1hY2FkZW15LW1hcmNvIiwiaWF0IjoxNzEwNTA4MDQwLCJleHAiOjE4ODMzMDgwNDB9.1W0KJj7mBuYhNPqEwfJzSvQD4JsNY-75qDvvlPqWiwE
+Content-Type: application/json
+
+{
+  "checkIn" : "2025-01-08",
+  "checkOut" : "2025-01-09",
+  "peopleCount" : 4,
+  "roomName" : "temp"
+}

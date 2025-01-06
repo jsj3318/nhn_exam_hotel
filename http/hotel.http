@@ -16,3 +16,11 @@ Content-Type: application/json
   "hasBathtub": true,
   "viewType": "oceanView"
 }
+
+### 로그인
+POST http://133.186.241.167:8200/login
+
+{
+  "username": "nhnacademy",
+  "password": "nhnacademy12345*"
+}

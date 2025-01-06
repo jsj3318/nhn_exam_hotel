@@ -1,12 +1,13 @@
 package com.nhnacademy.exam.hotel.controller;
 
+import com.nhnacademy.exam.hotel.dto.RoomCreateResponse;
+import com.nhnacademy.exam.hotel.dto.RoomRequest;
 import com.nhnacademy.exam.hotel.dto.RoomResponse;
 import com.nhnacademy.exam.hotel.service.RoomService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,6 +29,18 @@ public class RoomController {
             @PathVariable("hotel-id") Long hotelId
     ) {
         return roomService.getRoomsByHotelId(hotelId);
+    }
+
+    // 객실 생성
+    @PostMapping("/v1/hotel-api/hotels/{hotel-id}/rooms")
+    public ResponseEntity<?> createRoom(
+            @PathVariable("hotel-id") Long hotelId,
+            @RequestBody RoomRequest request
+            ) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(
+                        new RoomCreateResponse(roomService.addRoom(hotelId, request))
+                );
     }
 
 }

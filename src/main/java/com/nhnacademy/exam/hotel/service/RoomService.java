@@ -1,13 +1,19 @@
 package com.nhnacademy.exam.hotel.service;
 
+import com.nhnacademy.exam.hotel.domain.Hotel;
 import com.nhnacademy.exam.hotel.domain.Room;
+import com.nhnacademy.exam.hotel.domain.ViewType;
+import com.nhnacademy.exam.hotel.dto.RoomRequest;
 import com.nhnacademy.exam.hotel.dto.RoomResponse;
+import com.nhnacademy.exam.hotel.exception.DataAlreadyExistsException;
+import com.nhnacademy.exam.hotel.exception.WrongDataException;
 import com.nhnacademy.exam.hotel.repository.HotelRepository;
 import com.nhnacademy.exam.hotel.repository.RoomRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +32,7 @@ public class RoomService {
 
     public List<RoomResponse> getRoomsByHotelId(Long hotelId){
         if(hotelRepository.findById(hotelId).isEmpty()){
-            throw new IllegalArgumentException("Hotel not found : " + hotelId);
+            throw new WrongDataException("No Hotel : " + hotelId);
         }
 
         List<Room> roomList = roomRepository.findAllByHotel_HotelId(hotelId);
@@ -48,6 +54,30 @@ public class RoomService {
         }
 
         return roomResponseList;
+    }
+
+    @Transactional
+    public Long addRoom(Long hotelId, RoomRequest request){
+        // 한 호텔에는 동일한 방 이름이 없다
+        Hotel hotel = hotelRepository.findById(hotelId).orElseThrow(
+                () -> new WrongDataException("No Hotel : " + hotelId)
+        );
+
+        if(roomRepository.existsByHotel_HotelIdAndName(hotelId, request.name())){
+            throw new DataAlreadyExistsException("room name already exists : " + request.name());
+        }
+
+        Room room = Room.builder()
+                .name(request.name())
+                .hotel(hotel)
+                .capacity(request.capacity())
+                .floor(request.floor())
+                .bathtubFlag(request.hasBathtub())
+                .viewType(ViewType.fromParameter(request.viewType()))
+                .createdAt(LocalDateTime.now())
+                .build();
+
+        return roomRepository.save(room).getRoomId();
     }
 
 }

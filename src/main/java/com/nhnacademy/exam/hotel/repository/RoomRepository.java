@@ -10,4 +10,7 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
     // 호텔 id로 룸 리스트 조회
     List<Room> findAllByHotel_HotelId(Long hotelId);
 
+    // 호텔에서 객실 이름이 존재하는지 확인
+    Boolean existsByHotel_HotelIdAndName(Long hotelId, String name);
+
 }

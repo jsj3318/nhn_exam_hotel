@@ -14,10 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ExceptionAdvice {
 
     @ExceptionHandler({
-            IllegalArgumentException.class,
             DataAlreadyExistsException.class,
     })
-    @ResponseBody
     public ResponseEntity<?> handleAlreadyExistException(Exception e) {
         String errorMessage = e.getMessage() != null ? e.getMessage() : "An error occurred";
         return ResponseEntity.status(HttpStatus.CONFLICT).body(new ErrorDto(errorMessage));
@@ -27,7 +25,6 @@ public class ExceptionAdvice {
             NullPointerException.class,
             DataNotFoundException.class
     })
-    @ResponseBody
     public ResponseEntity<?> handleNotFoundException(Exception e) {
         String errorMessage = e.getMessage() != null ? e.getMessage() : "An error occurred";
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorDto(errorMessage));
@@ -36,10 +33,17 @@ public class ExceptionAdvice {
     @ExceptionHandler({
             WrongDataException.class
     })
-    @ResponseBody
     public ResponseEntity<?> handleBadRequestException(Exception e) {
         String errorMessage = e.getMessage() != null ? e.getMessage() : "An error occurred";
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorDto(errorMessage));
+    }
+
+    @ExceptionHandler({
+            RuntimeException.class
+    })
+    public ResponseEntity<?> handleInternalErrorException(Exception e) {
+        String errorMessage = e.getMessage() != null ? e.getMessage() : "An error occurred";
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ErrorDto(errorMessage));
     }
 
 }

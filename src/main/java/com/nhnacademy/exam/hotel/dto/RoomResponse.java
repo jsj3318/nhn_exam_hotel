@@ -3,8 +3,6 @@ package com.nhnacademy.exam.hotel.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.nhnacademy.exam.hotel.domain.ViewType;
 
-import java.time.LocalDateTime;
-
 public record RoomResponse(
         @JsonProperty("id")
         Long roomId,
@@ -20,6 +18,6 @@ public record RoomResponse(
 
         ViewType viewType,
 
-        LocalDateTime createdAt
+        String createdAt
 ) {
 }

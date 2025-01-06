@@ -11,6 +11,7 @@ import com.nhnacademy.exam.hotel.dto.RoomResponse;
 import com.nhnacademy.exam.hotel.exception.DataAlreadyExistsException;
 import com.nhnacademy.exam.hotel.exception.InvalidAccessException;
 import com.nhnacademy.exam.hotel.exception.WrongDataException;
+import com.nhnacademy.exam.hotel.formatter.TimeFormatter;
 import com.nhnacademy.exam.hotel.repository.HotelRepository;
 import com.nhnacademy.exam.hotel.repository.ReservationRepository;
 import com.nhnacademy.exam.hotel.repository.RoomRepository;
@@ -31,6 +32,8 @@ public class RoomService {
     private final HotelRepository hotelRepository;
     private final RoomRepository roomRepository;
     private final ReservationRepository reservationRepository;
+
+    private final TimeFormatter timeFormatter;
 
     // RoomResponse 클래스는 Room Entity 객체를 클라이언트에게 응답하기 위한 DTO 입니다.
     // 객실 정보 조회 API 명세서의 Response 양식을 보시고 적절한 형태로 RoomResponse 클래스를 만들어주세요.
@@ -55,7 +58,7 @@ public class RoomService {
                             room.getFloor(),
                             room.isBathtubFlag(),
                             room.getViewType(),
-                            room.getCreatedAt()
+                            timeFormatter.convert(room.getCreatedAt())
                     )
             );
         }

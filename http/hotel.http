@@ -24,3 +24,7 @@ POST http://133.186.241.167:8200/login
   "username": "nhnacademy",
   "password": "nhnacademy12345*"
 }
+
+### index
+GET localhost:8080/
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMCwiaXNzIjoibmhuLWFjYWRlbXktbWFyY28iLCJpYXQiOjE3MzYxMzQ4MzUsImV4cCI6MTczNjIyMTIzNX0.8O5xE1pY0ka9aX-TA4rnqA3tHBwAR4_E8-P9WhtBkMg
